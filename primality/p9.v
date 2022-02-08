@@ -1,0 +1,90 @@
+From Coqprime Require Import PocklingtonRefl.
+Local Open Scope positive_scope.
+Require Import  p9_0.
+Require Import  p9_1.
+Require Import  p9_2.
+Require Import  p9_3.
+Require Import  p9_4.
+Require Import  p9_5.
+Require Import  p9_6.
+Require Import  p9_7.
+Require Import  p9_8.
+Require Import  p9_9.
+Require Import  p9_10.
+Require Import  p9_11.
+Require Import  p9_12.
+Require Import  p9_13.
+Require Import  p9_14.
+Require Import  p9_15.
+Require Import  p9_16.
+Require Import  p9_17.
+Require Import  p9_18.
+Require Import  p9_19.
+Require Import  p9_20.
+Require Import  p9_21.
+Require Import  p9_22.
+Require Import  p9_23.
+Require Import  p9_24.
+Require Import  p9_25.
+Require Import  p9_26.
+Require Import  p9_27.
+Require Import  p9_28.
+Require Import  p9_29.
+Require Import  p9_30.
+Require Import  p9_31.
+Require Import  p9_32.
+Require Import  p9_33.
+Require Import  p9_34.
+Require Import  p9_35.
+Require Import  p9_36.
+Require Import  p9_37.
+Require Import  p9_38.
+Require Import  p9_39.
+Require Import  p9_40.
+Require Import  p9_41.
+Require Import  p9_42.
+Require Import  p9_43.
+Require Import  p9_44.
+Require Import  p9_45.
+Require Import  p9_46.
+Require Import  p9_47.
+Require Import  p9_48.
+Require Import  p9_49.
+Require Import  p9_50.
+Require Import  p9_51.
+Require Import  p9_52.
+Require Import  p9_53.
+Require Import  p9_54.
+Require Import  p9_55.
+Require Import  p9_56.
+Require Import  p9_57.
+Require Import  p9_58.
+Require Import  p9_59.
+Require Import  p9_60.
+Require Import  p9_61.
+Require Import  p9_62.
+Require Import  p9_63.
+Require Import  p9_64.
+Require Import  p9_65.
+Require Import  p9_66.
+Require Import  p9_67.
+Require Import  p9_68.
+Require Import  p9_69.
+Require Import  p9_70.
+Require Import  p9_71.
+Require Import  p9_72.
+Require Import  p9_73.
+Require Import  p9_74.
+Require Import  p9_75.
+Require Import  p9_76.
+Require Import  p9_77.
+Require Import  p9_78.
+Require Import  p9_79.
+Require Import  p9_80.
+Require Import  p9_81.
+
+Lemma  primo: prime 27191485017954692508181007844142825990273218868438146388681451179067109164072278231768282781701483828541559144581864386786157997011978434224966058671121477237614271642110766869454153537178882541766331238678862443068977448796964292116990266894884811648311368608385019681233558557167780462213927474042242376520833543504291448562944199131504877642242947330709279735639625532284133970249962791896719843080915234576734217015266381655451221869608018319065563574384004872977080663295451973401383326569905416020047787867892462410881494612511277044055118211696251043186824481528655475644112377065147377845150719026161442384529.
+Proof.
+exact
+(primo0 (primo1 (primo2 (primo3 (primo4 (primo5 (primo6 (primo7 (primo8 (primo9 (primo10 (primo11 (primo12 (primo13 (primo14 (primo15 (primo16 (primo17 (primo18 (primo19 (primo20 (primo21 (primo22 (primo23 (primo24 (primo25 (primo26 (primo27 (primo28 (primo29 (primo30 (primo31 (primo32 (primo33 (primo34 (primo35 (primo36 (primo37 (primo38 (primo39 (primo40 (primo41 (primo42 (primo43 (primo44 (primo45 (primo46 (primo47 (primo48 (primo49 (primo50 (primo51 (primo52 (primo53 (primo54 (primo55 (primo56 (primo57 (primo58 (primo59 (primo60 (primo61 (primo62 (primo63 (primo64 (primo65 (primo66 (primo67 (primo68 (primo69 (primo70 (primo71 (primo72 (primo73 (primo74 (primo75 (primo76 (primo77 (primo78 (primo79 (primo80 primo81))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))).
+Qed.

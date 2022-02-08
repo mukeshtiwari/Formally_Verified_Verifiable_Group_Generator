@@ -1,0 +1,217 @@
+From Coqprime Require Import PocklingtonRefl.
+Local Open Scope positive_scope.
+
+Lemma primo0:
+  prime  207937215841072356975003619963105485561614495768278508331859724246241249481->
+  prime  82343137473064653362101433505389772282236298961673282362398156564023347384021.
+Proof.
+intro H.
+apply (Pocklington_refl 
+     (Ell_certif
+      82343137473064653362101433505389772282236298961673282362398156564023347384021
+      396
+      ((207937215841072356975003619963105485561614495768278508331859724246241249481,1)::nil)
+      82343137473064653362101433505389772282236298961673282362398156564023347047881
+      92236816
+      0
+      9604)
+     ((Proof_certif _ H) :: nil)).
+native_cast_no_check (refl_equal true).
+Time Qed.
+
+Lemma primo1:
+  prime  32861913278841151407559448913808690473574721894727532341298607->
+  prime  207937215841072356975003619963105485561614495768278508331859724246241249481.
+Proof.
+intro H.
+apply (Pocklington_refl 
+     (Ell_certif
+      207937215841072356975003619963105485561614495768278508331859724246241249481
+      6327605275952
+      ((32861913278841151407559448913808690473574721894727532341298607,1)::nil)
+      158097434323355826995770914162862744764523751065255357921123715269026591683
+      73998464703464407725737184194547125975290904261851227737693914954373395059
+      0
+      120350385655659017757305950133511998317067981817708136886253224520908562244)
+     ((Proof_certif _ H) :: nil)).
+native_cast_no_check (refl_equal true).
+Time Qed.
+
+Lemma primo2:
+  prime  9891360488522319203657284692345752797390527406363777->
+  prime  32861913278841151407559448913808690473574721894727532341298607.
+Proof.
+intro H.
+apply (Pocklington_refl 
+     (Ell_certif
+      32861913278841151407559448913808690473574721894727532341298607
+      3322284464
+      ((9891360488522319203657284692345752797390527406363777,1)::nil)
+      32861913278841151407559448913808690473574721894727532340962467
+      92236816
+      0
+      9604)
+     ((Proof_certif _ H) :: nil)).
+native_cast_no_check (refl_equal true).
+Time Qed.
+
+Lemma primo3:
+  prime  586467478271215415845919884699641049192250081281->
+  prime  9891360488522319203657284692345752797390527406363777.
+Proof.
+intro H.
+apply (Pocklington_refl 
+     (Ell_certif
+      9891360488522319203657284692345752797390527406363777
+      16866
+      ((586467478271215415845919884699641049192250081281,1)::nil)
+      1422396194284641458084933782505643600487861384921841
+      0
+      8485317512105220496306663856138547298408791593464214
+      3782154372847348721070281455816090866963546645110058)
+     ((Proof_certif _ H) :: nil)).
+native_cast_no_check (refl_equal true).
+Time Qed.
+
+Lemma primo4:
+  prime  110333399983146257683491112540324869793873->
+  prime  586467478271215415845919884699641049192250081281.
+Proof.
+intro H.
+apply (Pocklington_refl 
+     (Ell_certif
+      586467478271215415845919884699641049192250081281
+      5315412
+      ((110333399983146257683491112540324869793873,1)::nil)
+      0
+      192
+      4
+      16)
+     ((Proof_certif _ H) :: nil)).
+native_cast_no_check (refl_equal true).
+Time Qed.
+
+Lemma primo5:
+  prime  161083825806410827285315123392310697->
+  prime  110333399983146257683491112540324869793873.
+Proof.
+intro H.
+apply (Pocklington_refl 
+     (Ell_certif
+      110333399983146257683491112540324869793873
+      684944
+      ((161083825806410827285315123392310697,1)::nil)
+      16900
+      0
+      650
+      16900)
+     ((Proof_certif _ H) :: nil)).
+native_cast_no_check (refl_equal true).
+Time Qed.
+
+Lemma primo6:
+  prime  55505933737802656468539477281->
+  prime  161083825806410827285315123392310697.
+Proof.
+intro H.
+apply (Pocklington_refl 
+     (Ell_certif
+      161083825806410827285315123392310697
+      2902101
+      ((55505933737802656468539477281,1)::nil)
+      161083825806410827285315122634726793
+      8234810772496
+      0
+      2869636)
+     ((Proof_certif _ H) :: nil)).
+native_cast_no_check (refl_equal true).
+Time Qed.
+
+Lemma primo7:
+  prime  220453035292739824969->
+  prime  55505933737802656468539477281.
+Proof.
+intro H.
+apply (Pocklington_refl 
+     (Ell_certif
+      55505933737802656468539477281
+      251781218
+      ((220453035292739824969,1)::nil)
+      48
+      0
+      4
+      16)
+     ((Proof_certif _ H) :: nil)).
+native_cast_no_check (refl_equal true).
+Time Qed.
+
+Lemma primo8:
+  prime  1006726802996729->
+  prime  220453035292739824969.
+Proof.
+intro H.
+apply (Pocklington_refl 
+     (Ell_certif
+      220453035292739824969
+      218980
+      ((1006726802996729,1)::nil)
+      48
+      0
+      4
+      16)
+     ((Proof_certif _ H) :: nil)).
+native_cast_no_check (refl_equal true).
+Time Qed.
+
+Lemma primo9:
+  prime  1084834973653->
+  prime  1006726802996729.
+Proof.
+intro H.
+apply (Pocklington_refl 
+     (Ell_certif
+      1006726802996729
+      928
+      ((1084834973653,1)::nil)
+      100
+      0
+      20
+      100)
+     ((Proof_certif _ H) :: nil)).
+native_cast_no_check (refl_equal true).
+Time Qed.
+
+Lemma primo10:
+  prime  12446923->
+  prime  1084834973653.
+Proof.
+intro H.
+apply (Pocklington_refl 
+     (Ell_certif
+      1084834973653
+      87157
+      ((12446923,1)::nil)
+      0
+      53969305
+      1326
+      48841)
+     ((Proof_certif _ H) :: nil)).
+native_cast_no_check (refl_equal true).
+Time Qed.
+Lemma primo11 : prime 12446923.
+Proof.
+ apply (Pocklington_refl
+         (Pock_certif 12446923 2 ((2074487, 1)::(2,1)::nil) 1)
+        ((Pock_certif 2074487 5 ((47, 1)::(2,1)::nil) 66) ::
+         (Proof_certif 47 prime47) ::
+         (Proof_certif 2 prime2) ::
+          nil)).
+ native_cast_no_check (refl_equal true).
+Qed.
+
+
+Lemma  primo: prime 82343137473064653362101433505389772282236298961673282362398156564023347384021.
+Proof.
+exact
+(primo0 (primo1 (primo2 (primo3 (primo4 (primo5 (primo6 (primo7 (primo8 (primo9 (primo10 primo11))))))))))).
+Qed.

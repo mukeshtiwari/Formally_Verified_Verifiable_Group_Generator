@@ -1,0 +1,19 @@
+-R src/ Verigen
+
+src/Sha256.v
+src/Bytestring.v
+src/Functions.v
+src/Fermat.v
+src/Domainpar.v
+src/Generator_1.v
+src/Generator_2.v
+src/Generator_3.v
+src/Generator_4.v
+src/Generator_5.v
+src/Generator_6.v
+src/Generator_7.v
+src/Generator_8.v
+src/Generator_9.v
+src/Generator_10.v
+src/Generator_11.v
+src/Generator_12.v

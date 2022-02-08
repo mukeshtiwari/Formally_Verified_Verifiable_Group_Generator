@@ -1,0 +1,20 @@
+From Coqprime Require Import PocklingtonRefl.
+Local Open Scope positive_scope.
+
+Lemma primo74:
+  prime  25186706364047031257545928103569->
+  prime  315717631076902301080018634305498796093.
+Proof.
+intro H.
+apply (Pocklington_refl 
+     (Ell_certif
+      315717631076902301080018634305498796093
+      12535090
+      ((25186706364047031257545928103569,1)::nil)
+      118394111653838362905006987864562048536
+      0
+      157858815538451150540009317152749398048
+      236788223307676725810013975729124097072)
+     ((Proof_certif _ H) :: nil)).
+native_cast_no_check (refl_equal true).
+Time Qed.

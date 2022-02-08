@@ -1,0 +1,3 @@
+Todo: Write another function that returns a pair (Valid g, n).
+This extra information, n, can be used to verify 
+the generator in 1 step.

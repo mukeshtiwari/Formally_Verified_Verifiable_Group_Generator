@@ -1,0 +1,89 @@
+From Coqprime Require Import PocklingtonRefl.
+Local Open Scope positive_scope.
+Require Import  p4_0.
+Require Import  p4_1.
+Require Import  p4_2.
+Require Import  p4_3.
+Require Import  p4_4.
+Require Import  p4_5.
+Require Import  p4_6.
+Require Import  p4_7.
+Require Import  p4_8.
+Require Import  p4_9.
+Require Import  p4_10.
+Require Import  p4_11.
+Require Import  p4_12.
+Require Import  p4_13.
+Require Import  p4_14.
+Require Import  p4_15.
+Require Import  p4_16.
+Require Import  p4_17.
+Require Import  p4_18.
+Require Import  p4_19.
+Require Import  p4_20.
+Require Import  p4_21.
+Require Import  p4_22.
+Require Import  p4_23.
+Require Import  p4_24.
+Require Import  p4_25.
+Require Import  p4_26.
+Require Import  p4_27.
+Require Import  p4_28.
+Require Import  p4_29.
+Require Import  p4_30.
+Require Import  p4_31.
+Require Import  p4_32.
+Require Import  p4_33.
+Require Import  p4_34.
+Require Import  p4_35.
+Require Import  p4_36.
+Require Import  p4_37.
+Require Import  p4_38.
+Require Import  p4_39.
+Require Import  p4_40.
+Require Import  p4_41.
+Require Import  p4_42.
+Require Import  p4_43.
+Require Import  p4_44.
+Require Import  p4_45.
+Require Import  p4_46.
+Require Import  p4_47.
+Require Import  p4_48.
+Require Import  p4_49.
+Require Import  p4_50.
+Require Import  p4_51.
+Require Import  p4_52.
+Require Import  p4_53.
+Require Import  p4_54.
+Require Import  p4_55.
+Require Import  p4_56.
+Require Import  p4_57.
+Require Import  p4_58.
+Require Import  p4_59.
+Require Import  p4_60.
+Require Import  p4_61.
+Require Import  p4_62.
+Require Import  p4_63.
+Require Import  p4_64.
+Require Import  p4_65.
+Require Import  p4_66.
+Require Import  p4_67.
+Require Import  p4_68.
+Require Import  p4_69.
+Require Import  p4_70.
+Require Import  p4_71.
+Require Import  p4_72.
+Require Import  p4_73.
+Require Import  p4_74.
+Require Import  p4_75.
+Require Import  p4_76.
+Require Import  p4_77.
+Require Import  p4_78.
+Require Import  p4_79.
+Require Import  p4_80.
+
+Lemma  primo: prime 30775978630800914887828714698626998824250963966146709840627253349863461586126089678486814326379490843228492252402567569988859797633681112539675156090486818372680356168656473971448102729390315141640354592087783778469871309494791841329488509756595115983526455646971532760163657536084034042966759474257528202142602609013860369616999380774023410013810115957921339521455701267320756719385975584715291928657454187787309573331113295872135528700047058819691005104259282450154137634415308918857295793861293876104478941719109946052733065895798017219282948123605648341473405661658417064832118983730212047561353543456847192194833.
+Proof.
+exact
+(primo0 (primo1 (primo2 (primo3 (primo4 (primo5 (primo6 (primo7 (primo8 (primo9 (primo10 (primo11 (primo12 (primo13 (primo14 (primo15 (primo16 (primo17 (primo18 (primo19 (primo20 (primo21 (primo22 (primo23 (primo24 (primo25 (primo26 (primo27 (primo28 (primo29 (primo30 (primo31 (primo32 (primo33 (primo34 (primo35 (primo36 (primo37 (primo38 (primo39 (primo40 (primo41 (primo42 (primo43 (primo44 (primo45 (primo46 (primo47 (primo48 (primo49 (primo50 (primo51 (primo52 (primo53 (primo54 (primo55 (primo56 (primo57 (primo58 (primo59 (primo60 (primo61 (primo62 (primo63 (primo64 (primo65 (primo66 (primo67 (primo68 (primo69 (primo70 (primo71 (primo72 (primo73 (primo74 (primo75 (primo76 (primo77 (primo78 (primo79 primo80)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))).
+Qed.

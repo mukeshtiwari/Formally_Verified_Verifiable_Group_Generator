@@ -4,7 +4,7 @@ Repo for verifiable generation of group generators.
 Run 'make' in _CoqProject directory to compute generators and 'make clean' 
 to clean everything. 'make' will produce output shown below:
 
-
+```
 coq_makefile -f _CoqProject -o CoqMakefile
 /Library/Developer/CommandLineTools/usr/bin/make --no-print-directory -f CoqMakefile 
 COQDEP VFILES
@@ -125,3 +125,5 @@ Finished transaction in 0.736 secs (0.735u,0.s) (successful)
      = true
      : bool
 Finished transaction in 1601.835 secs (1600.034u,1.772s) (successful)
+```
+

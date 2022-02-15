@@ -60,7 +60,7 @@ Section Generator.
   | Valid : N -> Tag.
 
 
-  Fixpoint compute_gen_slow (n : nat) (m : N) : Tag :=
+  Local Fixpoint compute_gen_slow (n : nat) (m : N) : Tag :=
     match n with 
     | 0%nat => Invalid 
     | S n' => 
@@ -75,7 +75,7 @@ Section Generator.
       if g <? 2 then compute_gen_slow n' (m + 1) else Valid g
     end.
   
-  Fixpoint compute_gen_fast (fuel : nat) (m : N) : Tag :=
+  Local Fixpoint compute_gen_fast (fuel : nat) (m : N) : Tag :=
     match fuel with 
     | 0%nat => Invalid 
     | S fuel' => 
@@ -232,7 +232,7 @@ Section Generator.
   Qed.
 
   
-  Fixpoint verify_generator_rec (n : nat) (m g : N) : bool :=
+  Local Fixpoint verify_generator_rec (n : nat) (m g : N) : bool :=
     match n with
     | 0%nat => false (* reached the end *)
     | S n' =>

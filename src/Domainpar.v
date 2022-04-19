@@ -226,6 +226,30 @@ Section Generator.
       lia. apply P.prime_p.
   Qed.
 
+  (* generators are in range 2 <= g < p *)
+  Lemma generator_in_range_2_p : forall (g : N), 
+    Valid g = compute_generator  -> 2 <= g < p.
+  Proof.
+    intros ? Hg.
+    eapply gen_generator_range.
+    unfold compute_generator in Hg.
+    rewrite <-compute_gen_fast_equal in Hg.
+    exact Hg.
+  Qed.
+  
+  Lemma correct_compute_genertor : 
+    forall g,  Valid g = compute_generator -> 
+    Zpow_mod (Z.of_N g) (Z.of_N q) (Z.of_N p) = 1%Z.
+  Proof.
+    intros * Hg.
+    unfold compute_generator in Hg.
+    rewrite <-compute_gen_fast_equal in Hg.
+    eapply correct_compute_gen.
+    rewrite <-compute_gen_fast_equal.
+    symmetry.
+    exact Hg.
+  Qed.
+  
   
   Local Fixpoint verify_generator_rec (n : nat) (m g : N) : bool :=
     match n with

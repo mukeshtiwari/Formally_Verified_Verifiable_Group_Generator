@@ -60,19 +60,14 @@ Section Generator.
   | Valid : N -> Tag.
 
 
-  Local Fixpoint compute_gen_slow (n : nat) (m : N) : Tag :=
+  Local Fixpoint compute_gen (n : nat) (m : N) : Tag :=
     match n with 
     | 0%nat => Invalid 
     | S n' => 
       let U := append_values m in
-      (*
-        This W can be arbitrary N but we can replace it by W % p without 
-        chaning the results. See the fast function and the proof that 
-        slow and fast are same. 
-      *) 
       let W := sha256_string U in
       let g := Npow_mod W k p in 
-      if g <? 2 then compute_gen_slow n' (m + 1) else Valid g
+      if g <? 2 then compute_gen n' (m + 1) else Valid g
     end.
   
   Local Fixpoint compute_gen_fast (fuel : nat) (m : N) : Tag :=
@@ -89,8 +84,8 @@ Section Generator.
   Definition compute_generator := 
     compute_gen_fast (2^16) 1.
   
-  Lemma compute_gen_slow_fast_equal : forall n m, 
-    compute_gen_slow n m = compute_gen_fast n m.
+  Lemma compute_gen_fast_equal : forall n m, 
+    compute_gen n m = compute_gen_fast n m.
   Proof.
     induction n.
     - simpl; intros ?.
@@ -213,7 +208,7 @@ Section Generator.
 
   (* generators are in range 2 <= g < p *)
   Lemma gen_generator_range : forall (n : nat) (m g : N), 
-    Valid g = compute_gen_slow n m  -> 2 <= g < p.
+    Valid g = compute_gen n m  -> 2 <= g < p.
   Proof.
     induction n.
     - simpl; intros ? ? Hg; 
@@ -231,6 +226,30 @@ Section Generator.
       lia. apply P.prime_p.
   Qed.
 
+  (* generators are in range 2 <= g < p *)
+  Lemma generator_in_range_2_p : forall (g : N), 
+    Valid g = compute_generator  -> 2 <= g < p.
+  Proof.
+    intros ? Hg.
+    eapply gen_generator_range.
+    unfold compute_generator in Hg.
+    rewrite <-compute_gen_fast_equal in Hg.
+    exact Hg.
+  Qed.
+  
+  Lemma correct_compute_genertor : 
+    forall g,  Valid g = compute_generator -> 
+    Zpow_mod (Z.of_N g) (Z.of_N q) (Z.of_N p) = 1%Z.
+  Proof.
+    intros * Hg.
+    unfold compute_generator in Hg.
+    rewrite <-compute_gen_fast_equal in Hg.
+    eapply correct_compute_gen.
+    rewrite <-compute_gen_fast_equal.
+    symmetry.
+    exact Hg.
+  Qed.
+  
   
   Local Fixpoint verify_generator_rec (n : nat) (m g : N) : bool :=
     match n with
@@ -253,7 +272,7 @@ Section Generator.
     
     
   Lemma gen_generator_always_verified_forward : forall (n : nat) (m g : N), 
-    Valid g = compute_gen_slow n m -> verify_generator_rec n m g = true.
+    Valid g = compute_gen n m -> verify_generator_rec n m g = true.
   Proof.
     induction n.
     - simpl; intros ? ? Hg.
@@ -267,7 +286,7 @@ Section Generator.
 
 
   Lemma gen_generator_always_verified_backward : forall (n : nat) (m g : N), 
-    verify_generator_rec n m g = true -> Valid g = compute_gen_slow n m.
+    verify_generator_rec n m g = true -> Valid g = compute_gen n m.
   Proof.
     induction n.
     - simpl; intros ? ? Hg.
@@ -283,7 +302,7 @@ Section Generator.
 
 
   Lemma gen_generator_always_verified : forall (n : nat) (m g : N), 
-    Valid g = compute_gen_slow n m <-> verify_generator_rec n m g = true.
+    Valid g = compute_gen n m <-> verify_generator_rec n m g = true.
   Proof.
     intros *; split; intro H.
     eapply gen_generator_always_verified_forward; assumption.
@@ -299,7 +318,7 @@ Section Generator.
   Proof.
     intros ? Hg.
     unfold compute_generator in Hg.
-    rewrite <-compute_gen_slow_fast_equal in Hg.
+    rewrite <-compute_gen_fast_equal in Hg.
     unfold verify_generator.
     assert (Ht : 2 <= g < p).
     eapply gen_generator_range with (n := (2^16)%nat) (m := 1).
@@ -308,7 +327,7 @@ Section Generator.
     apply N2Z.inj.
     rewrite zmod_nmod.
     eapply correct_compute_gen with (n := (2^16)%nat) (m := 1).
-    symmetry. rewrite <-compute_gen_slow_fast_equal.
+    symmetry. rewrite <-compute_gen_fast_equal.
     exact Hg. apply P.prime_p.
     destruct (negb ((2 <=? g) && (g <? p))) eqn:Hf.
     apply Bool.negb_true_iff in Hf.
@@ -320,7 +339,7 @@ Section Generator.
     apply N2Z.inj.
     rewrite zmod_nmod.
     apply correct_compute_gen with (n := (2^16)%nat) (m := 1).
-    symmetry. rewrite <-compute_gen_slow_fast_equal.
+    symmetry. rewrite <-compute_gen_fast_equal.
     exact Hg. apply P.prime_p.
     destruct (negb (Npow_mod g q p =? 1))  eqn:Hz.
     apply Bool.negb_true_iff in Hz.
@@ -345,7 +364,7 @@ Section Generator.
     clear Ht.
     destruct (negb (Npow_mod g q p =? 1)) eqn:Ht.
     congruence.
-    rewrite <-compute_gen_slow_fast_equal.
+    rewrite <-compute_gen_fast_equal.
     apply gen_generator_always_verified_backward.
     exact Hg.
   Qed.

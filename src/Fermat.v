@@ -644,7 +644,7 @@ Section Fermat_Little_Theorem.
     lia.
     destruct (index_some (append_mul_x_populate_terms x y n) k Hxx) as [t₁ Ht₁].
     destruct (index_some (append_mul_y_populate_terms x y n) k Hyy) as [t₂ Ht₂].
-    erewrite zip_list_index_some with (t0 := t₁) (w0 := t₂) in Hc.
+    erewrite zip_list_index_some with (t := t₁) (w := t₂) in Hc.
     destruct t₁. destruct p.
     destruct t₂. destruct p.
     inversion Hc; subst; clear Hc.

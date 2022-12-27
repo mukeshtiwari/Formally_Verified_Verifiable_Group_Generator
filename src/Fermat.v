@@ -91,15 +91,15 @@ Section Fermat_Little_Theorem.
       + simpl. lia.
       + assert (Ht : (S n + S k = S (S n +  k))%nat).
         nia. rewrite Ht; clear Ht.
-        rewrite snCsk, mult_plus_distr_l.
+        rewrite snCsk, Nat.mul_add_distr_l.
         eapply eq_trans with 
           (y := (fact (S n + k) * S k + fact (n + S k) * S n)%nat).
         assert (Ht : (fact (S (S n + k)) = (S (S n + k)) * fact (S n + k))%nat).
         simpl. lia. rewrite Ht; clear Ht.
         assert (Ht : (S (S n + k) = S n + S k)%nat) by lia.
         rewrite Ht; clear Ht.
-        rewrite mult_plus_distr_r.
-        rewrite <-plus_comm. apply f_equal2.
+        rewrite Nat.mul_add_distr_r.
+        rewrite <-Nat.add_comm. apply f_equal2.
         lia. assert (Ht : (n + S k = S n + k)%nat) by lia.
         rewrite Ht; clear Ht. lia.
         apply f_equal2.
@@ -128,7 +128,7 @@ Section Fermat_Little_Theorem.
     pose proof (fact_neq_0 n) as Hn.
     pose proof (fact_neq_0 k) as Hk.
     lia. rewrite <-H₂.
-    rewrite plus_comm.
+    rewrite Nat.add_comm.
     assert (Ht : (fact k * fact n * binomial_exp (k + n) k = 
       fact n * fact k * binomial_exp (k + n) k)%nat) by lia.
     rewrite Ht; clear Ht.
@@ -186,7 +186,7 @@ Section Fermat_Little_Theorem.
     l l', length l = length l' -> length (zip_with f l l') = length l.
   Proof.
     intros * H. rewrite zip_length_min.
-    rewrite H. rewrite Min.min_idempotent.
+    rewrite H. rewrite Nat.min_id.
     eauto.
   Qed.
 

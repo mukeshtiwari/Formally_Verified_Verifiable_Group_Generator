@@ -1,7 +1,6 @@
 Require Import Coq.NArith.NArith
   Znumtheory Lia
   Zdiv Zpow_facts.
-From Coq Require Import Even.
 
 Section Fn.
   
@@ -179,13 +178,14 @@ Section Fn.
     exists k,  n = (2 * k + 1)%nat /\  (N.pos p) = (N.of_nat k).
   Proof.
     intros p n Hp.
-    destruct (Even.even_or_odd n) as [H | H].
-    apply Even.even_equiv in H. destruct H as [k Hk].
+    destruct (Nat.Even_or_Odd n) as [H | H].
+    destruct H as [k Hk].
     (* Even (impossible) Case *)
     rewrite Hk in Hp; lia.
     (* Odd (possible) case *)
-    apply Even.odd_equiv in H. destruct H as [k Hk].
-    rewrite Hk in Hp. exists k.
+    destruct H as [k Hk].
+    rewrite Hk in Hp. 
+    exists k.
     split. exact Hk. lia.
   Qed.
 
@@ -195,13 +195,12 @@ Section Fn.
     exists k, n = (Nat.mul 2 k) /\  (N.pos p) = (N.of_nat k).
   Proof.
     intros p n Hp.
-    destruct (Even.even_or_odd n) as [H | H].
-    apply Even.even_equiv in H. destruct H as [k Hk].
+    destruct (Nat.Even_or_Odd n) as [H | H].
+    destruct H as [k Hk].
     (* Even (possible) case*)
     rewrite Hk in Hp. exists k.
     split. exact Hk. lia.
     (* Odd (impossible) case *)
-    apply Even.odd_equiv in H. 
     destruct H as [k Hk].
     rewrite Hk in Hp. lia.
   Qed.

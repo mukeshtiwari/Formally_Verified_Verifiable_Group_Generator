@@ -1,3 +1,7 @@
+# Coq Installation Instruction
+See the file Coq_Installation.md.
+
+
 # Formally Verified Verifiable Group Generation
 Repo for verifiable generation of group generators. 
 

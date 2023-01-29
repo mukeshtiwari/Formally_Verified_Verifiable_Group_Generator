@@ -1,6 +1,14 @@
 # Coq Installation Instruction
 See the file Coq_Installation.md.
 
+# SHA Checksum 
+See the file `shasum_of_all_files.md` for the checksums of all the file involved.  
+
+```
+Move to the Formally_Verified_Verifiable_Group_Generator directory and run  
+find . -type f -print0 | xargs -0 shasum 
+```
+
 
 # Formally Verified Verifiable Group Generation
 Repo for verifiable generation of group generators. 

@@ -5,8 +5,11 @@ Require Import Coq.NArith.NArith
   Verigen.Functions
   Znumtheory Lia
   Zdiv Zpow_facts.
+ 
 From Coq Require Import String Ascii.
 Open Scope N_scope.
+
+
 
 (* https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf*)
 (* Verifiable Canonical Generation of the Generator g  *)
@@ -70,17 +73,17 @@ Section Generator.
       if g <? 2 then compute_gen n' (m + 1) else Valid g
     end.
   
-  Local Fixpoint compute_gen_fast (fuel : nat) (m : N) : Tag :=
+  Local Fixpoint compute_gen_fast (fuel : nat) (count : N) : Tag :=
     match fuel with 
     | 0%nat => Invalid 
     | S fuel' => 
-      let U := append_values m in
+      let U := append_values count in
       let W := N.modulo (sha256_string U) p in
       let g := Npow_mod W k p in 
-      if g <? 2 then compute_gen_fast fuel' (m + 1) else Valid g
+      if g <? 2 then compute_gen_fast fuel' (count + 1) else Valid g
     end.
 
-
+  
   Definition compute_generator := 
     compute_gen_fast (2^16-1) 1.
   

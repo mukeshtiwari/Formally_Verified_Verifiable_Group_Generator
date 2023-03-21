@@ -254,14 +254,14 @@ Section Generator.
   Qed.
   
   
-  Local Fixpoint verify_generator_rec (n : nat) (m g : N) : bool :=
+  Local Fixpoint verify_generator_rec (n : nat) (count g : N) : bool :=
     match n with
     | 0%nat => false (* reached the end *)
     | S n' =>
-      let U := append_values m in 
+      let U := append_values count in 
       let W := sha256_string U in 
       let y := Npow_mod W k p in 
-      if y <? 2 then verify_generator_rec n' (m + 1) g
+      if y <? 2 then verify_generator_rec n' (count + 1) g
       else g =? y
     end.
 

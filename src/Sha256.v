@@ -92,8 +92,7 @@ Section Util.
     intros up t Hup Ht.
     split. 
     apply N.le_0_l.
-    apply N.div_lt_upper_bound. 
-    nia.
+    apply N.Div0.div_lt_upper_bound. 
     (* I know that 1 <= t *)
     assert (Hot: 1 <= t).
     rewrite Ht.
@@ -284,7 +283,7 @@ Section Fuel.
     (1 + N.to_nat (log256 np))%nat.
   Proof.
     intros np. unfold big_endien_list_N.
-    rewrite rev_length, byte_list_length_correctness;
+    rewrite length_rev, byte_list_length_correctness;
     reflexivity.
   Qed.
    
@@ -542,7 +541,7 @@ Section Sha256.
   (* Hypothesis that message length, in bits, is less than 2^64*)
   Context {Hn : mbits < 2^64}.
   (* Length of to be padded *)
-  Let k := Z.to_N (Zmod (448 - (Z.of_N mbits + 1)) 512).
+  Let k := Z.to_N (Z.modulo (448 - (Z.of_N mbits + 1)) 512).
 
 
   (* 
@@ -619,8 +618,8 @@ Section Sha256.
     apply N.log2_lt_pow2. nia.
     exact Hn. 
     assert (Hnw: N.log2 (8 * n) / 8 < 8). 
-    apply N.div_lt_upper_bound with (q := 8).
-    nia. exact Hnt.
+    apply N.Div0.div_lt_upper_bound with (q := 8).
+    exact Hnt.
     nia.
   Qed.
 
@@ -648,12 +647,12 @@ Section Sha256.
     apply N.log2_lt_pow2. nia.
     exact Hn.
     assert (Hwt: N.log2 mbits / 8 < 8).
-    apply N.div_lt_upper_bound; nia.
+    apply N.Div0.div_lt_upper_bound; nia.
     nia.
     apply Nat.leb_le in Ht.
     rewrite Ht.
     apply Nat.leb_le in Ht.
-    rewrite app_length.
+    rewrite length_app.
     rewrite get_zero_bytes_len.
     nia.
   Qed.
@@ -703,8 +702,8 @@ Section Sha256.
     destruct k_plus_gen as [x [H1 H2]].
     assert (Ht : 1 + (8 * x + 7) =  (x + 1) * 8).
     nia. rewrite H1, Ht.
-    rewrite N.mod_mul.
-    reflexivity. nia.
+    rewrite N.Div0.mod_mul.
+    reflexivity.
   Qed.
     
   (* compute the  wt *)
@@ -735,8 +734,8 @@ Section Sha256.
   Lemma div_64 : N.modulo (n +  wt + 8) 64 = 0.
   Proof.
     destruct sha_64_byte as [H1 H2].
-    rewrite H1, N.mul_comm, N.mod_mul.
-    reflexivity. nia.
+    rewrite H1, N.mul_comm, N.Div0.mod_mul.
+    reflexivity. 
   Qed. 
     
   (* Number of 64 byte, 512 bits, blocks in the message *)
@@ -748,7 +747,7 @@ Section Sha256.
   Lemma prepared_message_correctness : List.length prepared_message = N.to_nat (n + wt + 8).
   Proof.
     unfold prepared_message.
-    repeat rewrite app_length.
+    repeat rewrite length_app.
     rewrite message_padding_length, 
     message_length_byte_8.
     nia.

@@ -94,28 +94,30 @@ Section Fermat_Little_Theorem.
         rewrite snCsk, Nat.mul_add_distr_l.
         eapply eq_trans with 
           (y := (fact (S n + k) * S k + fact (n + S k) * S n)%nat).
-        assert (Ht : (fact (S (S n + k)) = (S (S n + k)) * fact (S n + k))%nat).
-        simpl. lia. rewrite Ht; clear Ht.
-        assert (Ht : (S (S n + k) = S n + S k)%nat) by lia.
-        rewrite Ht; clear Ht.
-        rewrite Nat.mul_add_distr_r.
-        rewrite <-Nat.add_comm. apply f_equal2.
-        lia. assert (Ht : (n + S k = S n + k)%nat) by lia.
-        rewrite Ht; clear Ht. lia.
-        apply f_equal2.
-        assert (Ht : (fact (S k) = (S k) * fact k)%nat).
-        simpl. lia. rewrite Ht; clear Ht.
-        pose proof (IHk (S n)) as Hs.
-        assert (Ht : (S k * fact k * fact (S n) * binomial_exp (S n + k) (S n) =
-          S k * (fact k * fact (S n) * binomial_exp (S n + k) (S n)))%nat).
-        lia. rewrite Ht; clear Ht.
-        rewrite <-Hs. lia.
-        rewrite IHn.
-        assert (Ht : (fact (S n) = (S n) * fact n)%nat).
-        simpl. lia. rewrite Ht; clear Ht.
-        assert (Ht : (S n + k = n + S k)%nat) by lia.
-        rewrite Ht; clear Ht.
-        lia.
+        ++
+          assert (Ht : (fact (S (S n + k)) = (S (S n + k)) * fact (S n + k))%nat).
+          simpl. lia. rewrite Ht; clear Ht.
+          assert (Ht : (S (S n + k) = S n + S k)%nat) by lia.
+          rewrite Ht; clear Ht.
+          rewrite Nat.mul_add_distr_r.
+          rewrite <-Nat.add_comm. apply f_equal2.
+          lia. assert (Ht : (n + S k = S n + k)%nat) by lia.
+          rewrite Ht; clear Ht. lia.
+        ++
+          apply f_equal2.
+          assert (Ht : (fact (S k) = (S k) * fact k)%nat).
+          simpl. lia. rewrite Ht; clear Ht.
+          pose proof (IHk (S n)) as Hs.
+          assert (Ht : (S k * fact k * fact (S n) * binomial_exp (S n + k) (S n) =
+            S k * (fact k * fact (S n) * binomial_exp (S n + k) (S n)))%nat).
+          lia. rewrite Ht; clear Ht.
+          rewrite <-Hs. lia.
+          rewrite IHn.
+          assert (Ht : (fact (S n) = (S n) * fact n)%nat).
+          simpl. lia. rewrite Ht; clear Ht.
+          assert (Ht : (S n + k = n + S k)%nat) by lia.
+          rewrite Ht; clear Ht.
+          lia.
   Qed.
 
   Lemma n_k_interchange : forall (n k : nat), 

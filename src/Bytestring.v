@@ -5,9 +5,8 @@ http://coq.io/opam/coq-bytestring.0.9.0.html
 
 *)
 
-Require Coq.Strings.String.
-Require Import Coq.NArith.NArith.
-Require Import Coq.micromega.Lia.
+From Stdlib Require Import Strings.String
+  Lia NArith.NArith.
 
 Set Primitive Projections.
 Set Default Proof Using "Type".
@@ -152,7 +151,7 @@ Fixpoint eqb (a b : bs) : bool :=
   end.
 
 (** comparison *)
-Require Import Coq.Structures.OrderedType.
+From Stdlib Require Import Structures.OrderedType.
 
 Lemma to_N_inj : forall x y, Byte.to_N x = Byte.to_N y <-> x = y.
 Proof.

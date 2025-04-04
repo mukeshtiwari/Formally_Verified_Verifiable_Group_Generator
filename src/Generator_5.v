@@ -1,8 +1,9 @@
-Require Import Coq.NArith.NArith
-  Verigen.Domainpar
+From Stdlib Require Import NArith
   Znumtheory Lia
-  Zdiv Zpow_facts.
-From Coq Require Import String Ascii.
+  Zdiv Zpow_facts
+  String Ascii.
+From Verigen Require Import Domainpar
+  Functions.
 Open Scope N_scope.
 
 

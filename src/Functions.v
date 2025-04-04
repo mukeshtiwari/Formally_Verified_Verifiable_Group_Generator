@@ -1,6 +1,6 @@
-Require Import Coq.NArith.NArith
+From Stdlib Require Import NArith
   Znumtheory Lia
-  Zdiv Zpow_facts.
+  Zdiv Zpow_facts Znat.
 
 Section Fn.
   
@@ -146,7 +146,7 @@ Section Fn.
   Proof.
     induction n.
     - intros ? ? ? Hw.
-      rewrite Nat.add_0_l. 
+      rewrite PeanoNat.Nat.add_0_l.
       assert (Ht : Npow_mod_unary e 0 w = Npos xH).
       simpl. reflexivity. 
       rewrite Ht.
@@ -174,7 +174,7 @@ Section Fn.
     exists k,  n = (2 * k + 1)%nat /\  (N.pos p) = (N.of_nat k).
   Proof.
     intros p n Hp.
-    destruct (Nat.Even_or_Odd n) as [H | H].
+    destruct (PeanoNat.Nat.Even_or_Odd n) as [H | H].
     destruct H as [k Hk].
     (* Even (impossible) Case *)
     rewrite Hk in Hp; lia.
@@ -191,7 +191,7 @@ Section Fn.
     exists k, n = (Nat.mul 2 k) /\  (N.pos p) = (N.of_nat k).
   Proof.
     intros p n Hp.
-    destruct (Nat.Even_or_Odd n) as [H | H].
+    destruct (PeanoNat.Nat.Even_or_Odd n) as [H | H].
     destruct H as [k Hk].
     (* Even (possible) case*)
     rewrite Hk in Hp. exists k.

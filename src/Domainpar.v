@@ -1,12 +1,11 @@
-
-Require Import Coq.NArith.NArith
-  Verigen.Sha256 Verigen.Bytestring
-  Verigen.Fermat
-  Verigen.Functions
+From Stdlib Require Import NArith
   Znumtheory Lia
-  Zdiv Zpow_facts.
- 
-From Coq Require Import String Ascii.
+  Zdiv Zpow_facts String
+  Ascii Znat.
+From Verigen Require Import 
+  Sha256 Bytestring
+  Fermat Functions.
+
 Open Scope N_scope.
 
 
@@ -85,7 +84,7 @@ Section Generator.
 
   
   Definition compute_generator := 
-    compute_gen_fast (2^16-1) 1.
+    compute_gen_fast ((Nat.pow 2 16) -1) 1.
   
   Lemma compute_gen_fast_equal : forall n m, 
     compute_gen n m = compute_gen_fast n m.
@@ -271,7 +270,7 @@ Section Generator.
   Definition verify_generator (g : N) : bool :=
     if negb (andb (2 <=? g) (g <? p)) then false
     else if negb (Npow_mod g q p =? 1) then false
-    else verify_generator_rec (2^16-1) 1 g.
+    else verify_generator_rec ((Nat.pow 2 16) -1) 1 g.
     
     
   Lemma gen_generator_always_verified_forward : forall (n : nat) (m g : N), 
@@ -324,12 +323,12 @@ Section Generator.
     rewrite <-compute_gen_fast_equal in Hg.
     unfold verify_generator.
     assert (Ht : 2 <= g < p).
-    eapply gen_generator_range with (n := (2^16-1)%nat) (m := 1).
+    eapply gen_generator_range with (n := ((Nat.pow 2 16) -1)%nat) (m := 1).
     exact Hg.
     assert (Hw : Npow_mod g q p = 1).
     apply N2Z.inj.
     rewrite zmod_nmod.
-    eapply correct_compute_gen with (n := (2^16-1)%nat) (m := 1).
+    eapply correct_compute_gen with (n := ((Nat.pow 2 16) - 1)%nat) (m := 1).
     symmetry. rewrite <-compute_gen_fast_equal.
     exact Hg. apply P.prime_p.
     destruct (negb ((2 <=? g) && (g <? p))) eqn:Hf.
@@ -341,7 +340,7 @@ Section Generator.
     assert (Hv : Npow_mod g q p = 1).
     apply N2Z.inj.
     rewrite zmod_nmod.
-    apply correct_compute_gen with (n := (2^16-1)%nat) (m := 1).
+    apply correct_compute_gen with (n := ((Nat.pow 2 16) - 1)%nat) (m := 1).
     symmetry. rewrite <-compute_gen_fast_equal.
     exact Hg. apply P.prime_p.
     destruct (negb (Npow_mod g q p =? 1))  eqn:Hz.

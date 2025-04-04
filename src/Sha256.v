@@ -1,14 +1,11 @@
 (* Implementation of SHA 256. *)
 (* https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf *)
 (* https://www.rfc-editor.org/rfc/rfc4634 *)
-Require Import Lia
-  Coq.Unicode.Utf8
-  Coq.Bool.Bool 
-  Coq.Init.Byte
-  Coq.NArith.NArith
-  Coq.Strings.Byte
-  Coq.ZArith.ZArith
-  Coq.Lists.List.
+From Stdlib Require Import Lia
+  Utf8 Bool 
+  Init.Byte NArith
+  Strings.Byte
+  ZArith List.
   
 Import Notations ListNotations.
 Local Open Scope N_scope.
@@ -845,7 +842,7 @@ Section Sha256.
 
 End Sha256.
 
-From Coq Require Import String Ascii.
+From Stdlib Require Import String Ascii.
 
 
 Definition concat_bytes (bs : list byte) : N :=

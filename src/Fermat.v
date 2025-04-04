@@ -1,9 +1,9 @@
-Require Import Coq.NArith.NArith
-  Verigen.Functions
+From Stdlib Require Import NArith
   Znumtheory Lia
   Zdiv Zpow_facts List
-  Coq.Init.Peano
-  Coq.Arith.PeanoNat.
+  Peano PeanoNat Factorial
+  Znat.
+From Verigen Require Import Functions.
 Import ListNotations.
 
 Section Fermat_Little_Theorem.
